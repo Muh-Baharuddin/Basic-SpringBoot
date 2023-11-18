@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 // @Scope("prototype")
 // @Lazy
 @Component
-public class ProductService {
+public class ComponentProductService {
   
 }

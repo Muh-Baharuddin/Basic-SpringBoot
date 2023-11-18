@@ -1,4 +1,4 @@
-package com.practice.basic.component;
+package com.practice.basic.componentDI;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,9 +7,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.practice.basic.componentConfiguration.ComponentConfiguration;
-import com.practice.basic.componentService.ComponentProductService;
+import com.practice.basic.componentDI.repository.ProductRepository;
+import com.practice.basic.componentDI.service.ProductService;
 
-public class ComponentTest {
+public class ComponentDITest {
   private ConfigurableApplicationContext applicationContext;
 
   @BeforeEach
@@ -19,10 +20,10 @@ public class ComponentTest {
   }
 
   @Test
-  void testService() {
-    ComponentProductService productService1 = applicationContext.getBean(ComponentProductService.class);
-    ComponentProductService productService2 = applicationContext.getBean("productService", ComponentProductService.class);
+  void testConstructorDI() {
+    ProductService productService = applicationContext.getBean(ProductService.class);
+    ProductRepository productRepository = applicationContext.getBean(ProductRepository.class);
 
-    Assertions.assertSame(productService1, productService2);
+    Assertions.assertSame(productRepository, productService.getProductRepository());
   }
 }
