@@ -3,13 +3,12 @@ package com.practice.basic.componentScanConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.practice.basic.data.Foo;
+import com.practice.basic.data.Bar;
 
 @Configuration
-public class FooConfiguration {
-
+public class BarScanConfiguration {
   @Bean
-  public Foo foo() {
-    return new Foo();
+  public Bar bar() {
+    return new Bar();
   }
 }
