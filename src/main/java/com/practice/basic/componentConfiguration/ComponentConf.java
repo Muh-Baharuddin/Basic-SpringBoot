@@ -5,12 +5,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = {
-  "com.practice.basic.componentService",
-  "com.practice.basic.componentDI",
-  "com.practice.basic.setterBasedDI",
-  "com.practice.basic.fieldBasedDI",
-  "com.practice.basic.qualifier"
+  "com.practice.basic.repository",
+  "com.practice.basic.service",
+  "com.practice.basic.configuration",
 })
-public class ComponentConfiguration {
+public class ComponentConf {
   
 }

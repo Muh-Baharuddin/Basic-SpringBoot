@@ -7,8 +7,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.practice.basic.componentConfiguration.ComponentConfiguration;
-import com.practice.basic.fieldBasedDI.repository.CustomerRepository;
-import com.practice.basic.fieldBasedDI.service.CustomerService;
+import com.practice.basic.fieldBasedDI.repository.CustomerFieldRepository;
+import com.practice.basic.fieldBasedDI.service.CustomerFieldService;
 
 public class FieldBasedDependencyInjectionTest {
   private ConfigurableApplicationContext applicationContext;
@@ -21,8 +21,8 @@ public class FieldBasedDependencyInjectionTest {
 
   @Test
   void testFieldBaseDI() {
-    CustomerService customerService = applicationContext.getBean(CustomerService.class);
-    CustomerRepository customerRepository = applicationContext.getBean(CustomerRepository.class);
+    CustomerFieldService customerService = applicationContext.getBean(CustomerFieldService.class);
+    CustomerFieldRepository customerRepository = applicationContext.getBean(CustomerFieldRepository.class);
 
     Assertions.assertSame(customerRepository, customerService.getCustomerRepository());
   }

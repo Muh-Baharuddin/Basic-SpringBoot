@@ -3,14 +3,14 @@ package com.practice.basic.fieldBasedDI.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.practice.basic.fieldBasedDI.repository.CustomerRepository;
+import com.practice.basic.fieldBasedDI.repository.CustomerFieldRepository;
 
 import lombok.Getter;
 
 @Component
-public class CustomerService {
+public class CustomerFieldService {
 
   @Getter
   @Autowired
-  private CustomerRepository customerRepository;
+  private CustomerFieldRepository customerRepository;
 }
