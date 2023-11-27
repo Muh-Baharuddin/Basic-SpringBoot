@@ -1,4 +1,4 @@
-package com.practice.basic.beanPostProcessor;
+package com.practice.basic.ordered;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,23 +10,25 @@ import org.springframework.context.annotation.Import;
 
 import com.practice.basic.beanPostProcessor.data.Car;
 import com.practice.basic.beanPostProcessor.processor.IdGeneratorBeanPostProcessor;
+import com.practice.basic.beanPostProcessor.processor.PrefixIdGeneratorBeanPostProcessor;
 
-public class BeanPostProcessorTest {
+public class OrderedTest {
   
   @Configuration
   @Import({
     Car.class,
-    IdGeneratorBeanPostProcessor.class
+    IdGeneratorBeanPostProcessor.class,
+    PrefixIdGeneratorBeanPostProcessor.class
   })
-  public static class TestBeanPostProcessorConfiguration {
+  public static class TestOrderConfiguration {
 
   }
-  
+
   private ConfigurableApplicationContext applicationContext;
 
   @BeforeEach
   void setUp() {
-    applicationContext = new AnnotationConfigApplicationContext(TestBeanPostProcessorConfiguration.class);
+    applicationContext = new AnnotationConfigApplicationContext(TestOrderConfiguration.class);
     applicationContext.registerShutdownHook();
   }
 
@@ -36,5 +38,6 @@ public class BeanPostProcessorTest {
 
     System.out.println(car.getId());
     Assertions.assertNotNull(car.getId());
+    Assertions.assertTrue(car.getId().startsWith("PREFIX-"));
   }
 }
